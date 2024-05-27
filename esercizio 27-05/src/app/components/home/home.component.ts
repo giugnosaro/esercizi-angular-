@@ -12,26 +12,8 @@ export class HomeComponent {
     related: Post[] = [];
 
     ngOnInit() {
-        this.getTopPost();
+
     }
 
-    async getTopPost() {
-        const response = await fetch('../../assets/db.json');
-        const postsResponse = response;
-        this.posts = await postsResponse.json();
-        const indice = Math.floor(Math.random() * this.posts.length);
-        this.post = this.posts[indice];
-        this.getRelated(4);
-    }
 
-    getRelated(num: number) {
-        const presenti: number[] = []
-        for (let i = 0; i < num; i++) {
-            const indice = Math.floor(Math.random() * this.posts.length);
-            if (presenti.includes(indice)) this.getRelated(num - i);
-            presenti.push(indice);
-            this.related.push(this.posts[indice]);
-        }
-        console.log(this.related);
-    }
 }

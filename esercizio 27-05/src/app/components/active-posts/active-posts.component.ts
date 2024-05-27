@@ -10,14 +10,8 @@ export class ActivePostsComponent {
     posts: Post[] = [];
 
     ngOnInit(): void {
-        this.getActivePosts().then((res) => {
-            this.posts = res;
-        });
+
     }
 
-    async getActivePosts() {
-        const response = await fetch('../../assets/db.json');
-        const postsResponse = (await response.json()) as Array<Post>;
-        return postsResponse.filter((post) => post.active);
-    }
+
 }
